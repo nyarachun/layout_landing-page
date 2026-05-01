@@ -148,7 +148,6 @@ body {
   @include on-desktop {
     height: 100vh;
     padding-top: 128px;
-    background-size: contain;
   }
 
   &__top {
