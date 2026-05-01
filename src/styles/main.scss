@@ -62,6 +62,7 @@ $fs-desktop-h2: 64px;
 }
 
 .page {
+  position: relative;
   scroll-behavior: smooth;
 }
 
@@ -107,15 +108,31 @@ body {
   font-family: Poppins, sans-serif;
   color: $color-white;
   background-color: $color-dark;
+  margin-bottom: 320px;
+
+  @include on-tablet {
+  body {
+    padding-bottom: 480px;
+  }
 }
+
+
+@include on-desktop {
+  body {
+    padding-bottom: 555px;
+  }
+}
+  }
 
 .header {
   background-image: url(../images/img/Cover_photo.png);
-  height: 80vh;
+  height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: right -50px center;
   margin: 0;
+  position: relative;
+  z-index: 10;
 
   @include flex(flex-end, stretch, column);
 
@@ -131,6 +148,7 @@ body {
   @include on-desktop {
     height: 100vh;
     padding-top: 128px;
+    background-size: contain;
   }
 
   &__top {
@@ -143,7 +161,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 12;
     box-sizing: border-box;
 
     background: transparent;
@@ -205,9 +223,14 @@ body {
 
     &--burger {
       position: relative;
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
       display: inline-block;
+
+      @include on-tablet {
+        width: 32px;
+        height: 32px;
+      }
 
       background: none;
       padding: 0;
@@ -476,6 +499,7 @@ body {
 
 .page__menu {
   position: fixed;
+  z-index: 200;
   top: 0;
   left: 0;
   right: 0;
@@ -495,8 +519,9 @@ body {
 
 /* #region main */
 .main {
-  background-color: $color-dark;
-  margin: 0;
+  background: $color-dark;
+  position: relative;
+  z-index: 2;
   padding: 20px;
 
   @include on-tablet {
@@ -504,7 +529,7 @@ body {
   }
 
   @include on-desktop {
-    padding: 120;
+    padding: 120px;
   }
 }
 
@@ -924,14 +949,19 @@ body {
 
 .footer {
   background-image: url(../images/img/footer-image.png);
-  height: 200px;
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: -1;
   background-size: cover;
   background-position: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 24px;
 
   @include on-tablet {
     height: 480px;
